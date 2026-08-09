@@ -14,7 +14,10 @@ func GetStoragePath() (string, error) {
 	}
 
 	dirPath := filepath.Join(homeDir, ".task-tracker-cli")
-	os.MkdirAll(dirPath, 0755)
+	err = os.MkdirAll(dirPath, 0755)
+	if err != nil {
+		return "", err
+	}
 	return filepath.Join(dirPath, "tasks.json"), nil
 
 }
