@@ -27,6 +27,18 @@ go.work.sum
 # env file
 .env
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# Compiled binaries
+task-cli
+/task-cli
+
+# JetBrains / GoLand IDE
+.idea/
+*.iml
+
+# VS Code IDE
+.vscode/
+
+# Local data files generated at runtime
+tasks.json
+task.json
+
