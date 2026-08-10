@@ -9,7 +9,7 @@ A lightweight command-line interface (CLI) tool written in **Go** to help you tr
 - **Task Management**: Add, update, and delete tasks.
 - **Status Tracking**: Mark tasks as `todo`, `in-progress`, or `done`.
 - **Filtering**: View all tasks or filter tasks by their current status.
-- **Persistent Storage**: Automatically saves and loads tasks from a local JSON file (`tasks.json`).
+- **Persistent Storage**: Automatically saves and loads tasks from a JSON file in your home directory (`~/.task-tracker-cli/tasks.json`).
 - **Zero External Dependencies**: Built entirely using Go's standard library.
 
 ---
@@ -74,17 +74,22 @@ task-cli delete 1
 
 ### 4. Update Task Status
 ```bash
+# Mark as todo
+task-cli mark-todo 1
+
 # Mark as in-progress
 task-cli mark-in-progress 1
 
 # Mark as done
 task-cli mark-done 1
+# Output: Task marked as <status> successfully
 ```
 
 ### 5. List Tasks
 ```bash
 # List all tasks
 task-cli list
+# Output format: Task ID: 1, Name: Buy groceries, Status: todo
 
 # List tasks by status
 task-cli list todo
@@ -96,10 +101,13 @@ task-cli list done
 
 ## 📁 File Storage
 
-Tasks are stored locally in a `tasks.json` file in the execution directory. If the file does not exist when a command is executed, the application creates it automatically.
+Tasks are stored in `~/.task-tracker-cli/tasks.json` in the user's home directory (or `%USERPROFILE%\.task-tracker-cli\tasks.json` on Windows). If the home directory cannot be resolved, it falls back to `tasks.json` in the local execution directory.
+
+If the directory or file does not exist when a command is executed, the application creates them automatically.
 
 ---
 
 ## 🔗 Reference
 
 - Project Specification: [roadmap.sh Task Tracker](https://roadmap.sh/projects/task-tracker)
+
